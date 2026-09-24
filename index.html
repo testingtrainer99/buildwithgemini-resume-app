@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Morgan — Senior AI & Full-Stack Architect | Interactive Resume</title>
+  <meta name="description" content="Crisp, interactive resume and portfolio of Alex Morgan, Senior AI & Full-Stack Architect. Built with modern web standards, hostable on GitHub Pages.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="resume-data.js"></script>
+</head>
+<body>
+
+  <!-- Floating Navigation / Controls Header -->
+  <nav class="top-nav">
+    <a href="#" class="brand-logo">
+      <span>AM</span>
+      <span class="brand-badge">Resume</span>
+    </a>
+
+    <div class="nav-actions">
+      <!-- Edit Resume Button -->
+      <button id="btn-edit" class="btn" title="Edit Resume Content">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        Edit
+      </button>
+
+      <!-- Export JSON -->
+      <button id="btn-export" class="btn" title="Download JSON Resume">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        JSON
+      </button>
+
+      <!-- Import JSON -->
+      <button id="btn-import" class="btn" title="Import JSON Resume">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        Import
+      </button>
+      <input type="file" id="json-file-input" accept=".json" style="display: none;">
+
+      <!-- Theme Switcher -->
+      <button id="btn-theme" class="btn btn-outline" title="Toggle Dark/Light Mode">
+        <svg id="theme-icon" class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+      <!-- Print / PDF Export Button -->
+      <button id="btn-print" class="btn btn-primary" title="Print or Save as PDF">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / PDF
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Profile Hero Card -->
+    <header class="profile-card">
+      <div class="profile-header-grid">
+        <img id="profile-avatar" src="" alt="Profile Avatar" class="profile-avatar">
+        <div class="profile-info">
+          <h1 id="profile-name"></h1>
+          <div id="profile-title" class="profile-title"></div>
+          <div id="profile-tagline" class="profile-tagline"></div>
+          
+          <div id="contact-bar" class="contact-bar"></div>
+        </div>
+      </div>
+      <div id="profile-summary" class="summary-box"></div>
+    </header>
+
+    <!-- Stat Highlights -->
+    <section id="highlights-container" class="highlights-grid"></section>
+
+    <!-- Experience Timeline -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        Work Experience
+      </h2>
+      <div id="experience-container" class="timeline"></div>
+    </section>
+
+    <!-- Featured Projects Grid -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        Featured Projects
+      </h2>
+      <div id="projects-container" class="projects-grid"></div>
+    </section>
+
+    <!-- Skills Breakdown -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        Technical Capabilities
+      </h2>
+      <div id="skills-container" class="skills-grid"></div>
+    </section>
+
+    <!-- Education & Certifications Grid -->
+    <div class="split-grid">
+      <section class="section-card">
+        <h2 class="section-title">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          Education
+        </h2>
+        <div id="education-container"></div>
+      </section>
+
+      <section class="section-card">
+        <h2 class="section-title">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          Certifications
+        </h2>
+        <div id="certifications-container"></div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Edit Resume Modal Dialog -->
+  <div id="edit-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Edit Resume Details</h3>
+        <button id="modal-close" class="btn btn-outline" style="padding: 4px 10px;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="edit-name" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Professional Title</label>
+          <input type="text" id="edit-title" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tagline</label>
+          <input type="text" id="edit-tagline" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="edit-email" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="text" id="edit-phone" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Location</label>
+          <input type="text" id="edit-location" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Executive Summary</label>
+          <textarea id="edit-summary" class="form-textarea"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-reset-default" class="btn btn-outline">Reset to Default</button>
+        <button id="btn-save-modal" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
